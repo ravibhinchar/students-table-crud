@@ -9,28 +9,28 @@ export class StudentsController {
 
   @Post()
   @HttpCode(HttpStatus.CREATED)
-  create(@Body() createStudentDto: CreateStudentDto) {
+  async create(@Body() createStudentDto: CreateStudentDto) {
     return this.studentsService.create(createStudentDto);
   }
 
   @Get()
-  findAll() {
+  async findAll() {
     return this.studentsService.findAll();
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
+  async findOne(@Param('id') id: string) {
     return this.studentsService.findOne(id);
   }
 
   @Put(':id')
-  update(@Param('id') id: string, @Body() updateStudentDto: UpdateStudentDto) {
+  async update(@Param('id') id: string, @Body() updateStudentDto: UpdateStudentDto) {
     return this.studentsService.update(id, updateStudentDto);
   }
 
   @Delete(':id')
   @HttpCode(HttpStatus.NO_CONTENT)
-  remove(@Param('id') id: string) {
-    this.studentsService.remove(id);
+  async remove(@Param('id') id: string) {
+    await this.studentsService.remove(id);
   }
 }
