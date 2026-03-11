@@ -1,0 +1,10 @@
+node_modules/
+dist/
+.env
+.vite/
+coverage/
+*.log
+.DS_Store
+build_error.txt
+error.txt
+error3.txt
