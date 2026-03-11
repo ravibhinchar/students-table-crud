@@ -19,7 +19,16 @@ export default function App() {
     try {
       setLoading(true);
       const response = await axios.get(API_URL);
-      setStudents(response.data);
+      if (Array.isArray(response.data)) {
+        setStudents(response.data);
+      } else if (response.data && Array.isArray(response.data.value)) {
+        setStudents(response.data.value);
+      } else if (response.data && Array.isArray(response.data.data)) {
+        setStudents(response.data.data);
+      } else {
+        setStudents([]);
+        console.error("API did not return a valid array of students:", response.data);
+      }
     } catch (error) {
       showMessage('Failed to fetch students. Is the backend running?', 'error');
     } finally {
