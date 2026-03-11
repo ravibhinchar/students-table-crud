@@ -6,7 +6,7 @@ import StudentTable from './components/StudentTable';
 import Loading from './components/Loading';
 import { exportToExcel } from './utils/exportExcel';
 
-const API_URL = 'http://localhost:3000/students';
+const API_URL = 'https://students-table-tds6.onrender.com/students';
 
 export default function App() {
   const [students, setStudents] = useState([]);
